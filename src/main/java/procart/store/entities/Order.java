@@ -14,7 +14,7 @@ public class Order implements Serializable {
 
     private static final long seriaVersionUID = 1L;
 
-    private OrderStatus orderStatus;
+    private Integer orderStatus;
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Order implements Serializable {
         super();
         this.id = id;
         this.moment = moment;
-        this.orderStatus = orderStatus;
+        setOrderStatus(orderStatus);
         this.client = client;
     }
 
@@ -61,12 +61,16 @@ public class Order implements Serializable {
     }
 
     public OrderStatus getOrderStatus() {
-        return orderStatus;
+        return OrderStatus.valueOf(orderStatus);
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
+        if (orderStatus != null)
+        {
+            this.orderStatus = orderStatus.getCode();
+        }
     }
+
 
     @Override
     public boolean equals(Object o) {
