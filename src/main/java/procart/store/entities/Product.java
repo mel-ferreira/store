@@ -34,7 +34,11 @@ public class Product implements Serializable {
 
     }
 
-    @Transient
+    @ManyToMany
+    @JoinTable(name ="tb_produto_categoria",
+            joinColumns = @JoinColumn(name = "produto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
     private Set<Category> categorias = new HashSet<>();
 
     public Long getId() {
