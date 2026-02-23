@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import procart.store.entities.Category;
 import procart.store.entities.Order;
 import procart.store.entities.User;
 import procart.store.entities.enums.OrderStatus;
+import procart.store.repositories.CategoryRepository;
 import procart.store.repositories.OrderRepository;
 import procart.store.repositories.UserRepository;
 
@@ -24,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String @NonNull ... args) {
         User usuario1 = new User(null, "Maria", "maria@gmail.com", "11986456632", "147258");
@@ -35,5 +40,11 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(usuario1,usuario2));
         orderRepository.saveAll(Arrays.asList(pedido1,pedido2,pedido3));
+
+        Category cat1 = new Category(null, "Eletrônicos");
+        Category cat2 = new Category(null, "Livros");
+        Category cat3 = new Category(null, "Computadores");
+        categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+
     }
 }

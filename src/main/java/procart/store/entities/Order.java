@@ -12,7 +12,7 @@ import java.util.Objects;
 @Table(name = "tb_pedidos")
 public class Order implements Serializable {
 
-    private static final long seriaVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     private Integer orderStatus;
 
