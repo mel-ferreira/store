@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import procart.store.entities.Category;
 import procart.store.entities.Order;
+import procart.store.entities.Product;
 import procart.store.entities.User;
 import procart.store.entities.enums.OrderStatus;
 import procart.store.repositories.CategoryRepository;
 import procart.store.repositories.OrderRepository;
+import procart.store.repositories.ProductRepository;
 import procart.store.repositories.UserRepository;
 
 import java.time.Instant;
@@ -29,6 +31,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String @NonNull ... args) {
         User usuario1 = new User(null, "Maria", "maria@gmail.com", "11986456632", "147258");
@@ -44,7 +49,15 @@ public class TestConfig implements CommandLineRunner {
         Category cat1 = new Category(null, "Eletrônicos");
         Category cat2 = new Category(null, "Livros");
         Category cat3 = new Category(null, "Computadores");
+
+        Product prod1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product prod2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product prod3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product prod4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+        Product prod5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
         categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        productRepository.saveAll(Arrays.asList(prod1,prod2,prod3,prod4,prod5));
 
     }
 }

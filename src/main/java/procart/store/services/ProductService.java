@@ -3,24 +3,26 @@ package procart.store.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import procart.store.entities.Category;
+import procart.store.entities.Product;
 import procart.store.repositories.CategoryRepository;
+import procart.store.repositories.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryService {
+public class ProductService {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private ProductRepository productRepository;
 
-     public List<Category> findAll()
+     public List<Product> findAll()
      {
-         return categoryRepository.findAll();
+         return productRepository.findAll();
      }
-     public Category findById(Long id)
+     public Product findById(Long id)
      {
-         Optional<Category> obj = categoryRepository.findById(id);
+         Optional<Product> obj = productRepository.findById(id);
          return obj.get();
      }
 }

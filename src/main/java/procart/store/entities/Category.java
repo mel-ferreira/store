@@ -3,7 +3,9 @@ package procart.store.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -25,6 +27,9 @@ public class Category implements Serializable {
         this.nome = nome;
     }
 
+    @Transient
+    private Set<Product> produtos = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -41,6 +46,10 @@ public class Category implements Serializable {
         this.nome = nome;
     }
 
+    public Set<Product> getProdutos() {
+        return produtos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -52,4 +61,5 @@ public class Category implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
 }
