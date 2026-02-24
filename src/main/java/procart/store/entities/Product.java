@@ -1,5 +1,6 @@
 package procart.store.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -41,6 +42,9 @@ public class Product implements Serializable {
     )
     private Set<Category> categorias = new HashSet<>();
 
+    @OneToMany(mappedBy = "id.produto")
+    private Set<OrderItem> itens = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -81,6 +85,16 @@ public class Product implements Serializable {
         this.imgUrl = imgUrl;
     }
 
+    @JsonIgnore
+    public Set<Order> getPedidos()
+    {
+        Set<Order> set = new HashSet<>();
+        for (OrderItem item : itens)
+        {
+            set.add(item.getPedido());
+        }
+        return set;
+    }
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
