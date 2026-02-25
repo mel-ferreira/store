@@ -81,6 +81,16 @@ public class Order implements Serializable {
         return itens;
     }
 
+    public Double getTotal()
+    {
+        double soma = 0.0;
+        for (OrderItem item : itens)
+        {
+            soma += item.getSubtotal();
+        }
+        return soma;
+    }
+
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private Payment pagamento;
 
