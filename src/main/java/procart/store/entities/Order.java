@@ -81,6 +81,17 @@ public class Order implements Serializable {
         return itens;
     }
 
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private Payment pagamento;
+
+    public Payment getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Payment pagamento) {
+        this.pagamento = pagamento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
