@@ -45,10 +45,10 @@ Separação entre:
 
 ## ⚙️ Como rodar o projeto
 
-Clone o repositório
-Configure o banco no application.properties
-Rode a aplicação
-A API estará disponível em: http://localhost:8080
+- Clone o repositório
+- Configure o banco no application.properties
+- Rode a aplicação
+- A API estará disponível em: http://localhost:8080
 
 📬 Principais endpoints
 📦 Produto
